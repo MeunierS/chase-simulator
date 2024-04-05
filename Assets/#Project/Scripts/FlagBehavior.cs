@@ -24,10 +24,12 @@ public class FlagBehavior : MonoBehaviour
     void OnTriggerEnter(Collider other)
     {
         Debug.Log($"{other.name} entered into {name}");
-        if(nextOne != null)
-        {
-            nextOne.gameObject.SetActive(true);
+        if(other.CompareTag("Player")){
+            if(nextOne != null)
+            {
+                nextOne.gameObject.SetActive(true);
+            }
+            gameObject.SetActive(false);
         }
-        gameObject.SetActive(false);
     }
 }

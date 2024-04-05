@@ -20,4 +20,10 @@ public class SphereBehavior : MonoBehaviour
     {
         agent.SetDestination(target.position);
     }
+    void OnTriggerEnter(Collider other)
+    {
+        if(other.CompareTag("Player")){
+            Debug.Log($"The {name} touched you", gameObject);
+        }
+    }
 }
