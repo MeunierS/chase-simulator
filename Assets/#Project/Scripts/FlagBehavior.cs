@@ -6,20 +6,24 @@ using UnityEngine;
 public class FlagBehavior : MonoBehaviour
 {
     [SerializeField] private FlagBehavior nextOne;
+    public bool mustBeDeactivated;
 
     // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
         if(nextOne != null)
         {
-            nextOne.gameObject.SetActive(false);
+            nextOne.mustBeDeactivated=true;
         }
     }
 
     // Update is called once per frame
-    void Update()
+    void Start()
     {
-        
+        if (mustBeDeactivated){
+            gameObject.SetActive(false);
+            mustBeDeactivated = false;
+        }
     }
     void OnTriggerEnter(Collider other)
     {
